@@ -7,7 +7,7 @@ const ScrollToTop = () => {
   return (
     <div
       onClick={handleScrollToTop}
-      className="fixed bottom-8 right-8 w-12 h-12 bg-primary border border-[#00000017] shadow-[0px_0px_10px_rgba(0,0,0,0.08)] rounded-full flex items-center justify-center cursor-pointer hover:shadow-[0px_0px_14px_rgba(0,0,0,0.1)] transition-all hover:border-black duration-300"
+      className="fixed z-50 bottom-8 right-8 w-12 h-12 bg-primary border border-[#00000017] shadow-[0px_0px_10px_rgba(0,0,0,0.08)] rounded-full flex items-center justify-center cursor-pointer hover:shadow-[0px_0px_14px_rgba(0,0,0,0.1)] transition-all hover:border-black duration-300"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

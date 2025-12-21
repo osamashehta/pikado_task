@@ -1,7 +1,7 @@
 "use client";
 
 import { useProductList } from "@/hooks/useProductList";
-import Container from "../sheard/Container";
+import Container from "../shared/Container";
 import ProductCard from "./ProductCard";
 import { Product } from "@/types/Products";
 import ProductSkeletonCard from "./ProductSkeletonCard";

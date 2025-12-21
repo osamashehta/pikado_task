@@ -1,12 +1,16 @@
 import { Product } from "@/types/Products";
 import Image from "next/image";
 import { StarIcon } from "../icons/StarIcon";
+import Link from "next/link";
 interface ProductCardProps {
   product: Product;
 }
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div className="border border-[#00000017] bg-primary shadow-[0px_0px_10px_rgba(0,0,0,0.08)] rounded-[29px] px-4 py-5 flex flex-col items-center gap-3 relative group hover:shadow-[0px_0px_14px_rgba(0,0,0,0.1)] transition-all hover:border-[#00000033] duration-300">
+    <Link
+      href={`/products/${product.id}`}
+      className="border border-[#00000017] bg-primary shadow-[0px_0px_10px_rgba(0,0,0,0.08)] rounded-[29px] px-4 py-5 flex flex-col items-center gap-3 relative group hover:shadow-[0px_0px_14px_rgba(0,0,0,0.1)] transition-all hover:border-[#00000033] duration-300"
+    >
       <Image
         src={product.thumbnail}
         alt={product.title}
@@ -32,7 +36,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         {product.rating}
         <StarIcon />
       </span>
-    </div>
+    </Link>
   );
 };
 

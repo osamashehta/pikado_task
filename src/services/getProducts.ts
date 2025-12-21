@@ -1,4 +1,4 @@
-import { Product, ProductsResponse } from "@/types/Products";
+import {ProductsResponse } from "@/types/Products";
 
 interface GetProductsParams {
   limit: number;
