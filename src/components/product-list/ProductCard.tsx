@@ -32,10 +32,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <div className="text-secondary  text-[14px] line-clamp-2 ">
         {product.description}
       </div>
-      <span className=" absolute top-4 right-4 text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full flex items-center gap-1">
+      <div className=" absolute top-4 right-4 text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full flex items-center justify-center gap-1">
         {product.rating}
         <StarIcon />
-      </span>
+      </div>
     </Link>
   );
 };

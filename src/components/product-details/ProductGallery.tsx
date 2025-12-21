@@ -21,7 +21,10 @@ const ProductGallery = ({ images }: { images: string[] }) => {
       className="w-full"
     >
       {images.map((image, index) => (
-        <SwiperSlide key={index} className="w-full h-100 relative border border-gray-200 rounded-[29px] p-4">
+        <SwiperSlide
+          key={index}
+          className="w-full h-100 relative border border-gray-200 rounded-[29px] p-4"
+        >
           <Image
             width={400}
             height={400}
