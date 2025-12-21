@@ -12,7 +12,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         alt={product.title}
         width={200}
         height={160}
-        className="group-hover:scale-[1.2] transition-all duration-300"
+        className="group-hover:scale-[1.2] transition-all duration-300 rounded-[29px]"
       />
       <h2 className="font-semibold  md:text-lg mt-4 text-center text-secondary">
         {product.title}
