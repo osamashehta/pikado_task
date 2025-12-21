@@ -3,6 +3,7 @@ import ProductContentSkeleton from "@/components/product-details/ProductContentS
 import ProductGallery from "@/components/product-details/ProductGallery";
 import ProductReviews from "@/components/product-details/ProductReviews";
 import ProductReviewsSkeleton from "@/components/product-details/ProductReviewsSkeleton";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 import Container from "@/components/shared/Container";
 import getProductDetails from "@/services/getProductDetails";
 import { Product } from "@/types/Products";
@@ -31,24 +32,36 @@ const page = async ({ params }: pageProps) => {
   const product: Product = await getProductDetails(id);
 
   return (
-    <Container className="grid grid-cols-3 my-8 gap-y-8 gap-x-10">
-      <div className="gallery col-span-3 md:col-span-1">
-        <Suspense
-          fallback={<div className="w-50 h-100 bg-slate-200 animate-pulse" />}
-        >
-          <ProductGallery images={product.images} />
-        </Suspense>
-      </div>
-      <div className="content col-span-3 md:col-span-2">
-        <Suspense fallback={<ProductContentSkeleton />}>
-          <ProductContent product={product} />
-        </Suspense>
-      </div>
+    <Container className="my-8">
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Products", href: "/" },
+          { label: product.title },
+        ]}
+      />
 
-      <div className="col-span-3">
-        <Suspense fallback={<ProductReviewsSkeleton />}>
-          <ProductReviews reviews={product.reviews} />
-        </Suspense>
+      <div className="grid grid-cols-3 gap-y-8 gap-x-10">
+        <div className="gallery col-span-3 md:col-span-1">
+          <Suspense
+            fallback={
+              <div className="w-full h-100 bg-slate-200 animate-pulse" />
+            }
+          >
+            <ProductGallery images={product.images} />
+          </Suspense>
+        </div>
+        <div className="content col-span-3 md:col-span-2">
+          <Suspense fallback={<ProductContentSkeleton />}>
+            <ProductContent product={product} />
+          </Suspense>
+        </div>
+
+        <div className="col-span-3">
+          <Suspense fallback={<ProductReviewsSkeleton />}>
+            <ProductReviews reviews={product.reviews} />
+          </Suspense>
+        </div>
       </div>
     </Container>
   );
