@@ -72,7 +72,7 @@ pnpm dev
 ```
 pikado_task/
 ├── src/
-│   ├── app/                    # Next.js App Router pages
+│   ├── app/                   # Next.js App Router pages
 │   │   ├── page.tsx           # Home page (product listing)
 │   │   ├── products/
 │   │   │   └── [id]/          # Dynamic product details page
@@ -85,9 +85,7 @@ pikado_task/
 │   │   └── shared/            # Reusable components
 │   ├── hooks/                 # Custom React hooks
 │   ├── services/              # API service functions
-│   ├── lib/                   # Utility functions
 │   └── types/                 # TypeScript type definitions
-├── public/                    # Static assets
 └── package.json
 ```
 
