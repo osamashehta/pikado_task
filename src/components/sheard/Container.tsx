@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
 
-const Container = ({ children, className }: { children: React.ReactNode, className?: string }) => {
-    return (
-        <div className={`container px-4 mx-auto ${className}`}>
-            {children}
-        </div>
-    )
-}
+const Container = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <section className={`container px-4 mx-auto ${className}`}>
+      {children}
+    </section>
+  );
+};
 
-export default Container
+export default Container;
