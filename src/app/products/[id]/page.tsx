@@ -8,6 +8,7 @@ import Container from "@/components/shared/Container";
 import getProductDetails from "@/services/getProductDetails";
 import { Product } from "@/types/Products";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 interface pageProps {
@@ -18,29 +19,47 @@ export async function generateMetadata({
   params,
 }: pageProps): Promise<Metadata> {
   const { id } = await params;
-  const product: Product = await getProductDetails(id);
 
-  return {
-    title: `${product.title} - Product Details`,
-    description: product.description,
-    keywords: [product.brand, product.category, ...product.tags],
-  };
+  try {
+    const product: Product = await getProductDetails(id);
+
+    return {
+      title: `${product.title} - Product Details`,
+      description: product.description,
+      keywords: [product.brand, product.category, ...product.tags],
+    };
+  } catch (error: any) {
+    if (error?.cause?.status === 404) {
+      return {
+        title: "Product Not Found",
+        description: "The requested product does not exist.",
+      };
+    }
+
+    return {
+      title: "Error",
+      description: "An error occurred while loading the product.",
+    };
+  }
 }
 
 const page = async ({ params }: pageProps) => {
   const { id } = await params;
-  const product: Product = await getProductDetails(id);
+  let product: Product;
+  try {
+    product = await getProductDetails(id);
+  } catch (error: any) {
+    if (error?.cause?.status === 404) {
+      notFound();
+    }
+    throw error;
+  }
 
   return (
     <Container className="my-8">
       <Breadcrumb
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Products", href: "/" },
-          { label: product.title },
-        ]}
+        items={[{ label: "Home", href: "/" }, { label: product.title }]}
       />
-
       <div className="grid grid-cols-3 gap-y-8 gap-x-10">
         <div className="gallery col-span-3 md:col-span-1">
           <Suspense
